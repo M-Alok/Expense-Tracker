@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
+from datetime import datetime
 from ..schema import ExpenseResponse, ExpenseCreate
 from .auth import get_current_user
 from ..database import get_db
@@ -51,4 +52,4 @@ def delete_expense(expense_id: int, current_user: User = Depends(get_current_use
         raise HTTPException(status_code=404, detail="Expense not found")
     db.delete(expense)
     db.commit()
-    return {"message": "Expense deleted"}
+    return {"message": f"Deleted {expense.category} expense of ammount {expense.amount}"}

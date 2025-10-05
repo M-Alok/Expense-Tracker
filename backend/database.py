@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, Session, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 from urllib.parse import quote_plus
 from dotenv import load_dotenv
 import os

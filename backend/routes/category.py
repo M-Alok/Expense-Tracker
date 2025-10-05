@@ -29,4 +29,4 @@ def delete_category(category_id: int, current_user: User = Depends(get_current_u
         raise HTTPException(status_code=404, detail="Category not found")
     db.delete(category)
     db.commit()
-    return {"message": "Category deleted"}
+    return {"message": f"Deleted {category.name} category"}

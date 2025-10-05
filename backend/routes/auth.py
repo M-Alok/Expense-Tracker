@@ -1,6 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
-from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
 from jose import JWTError, jwt
@@ -8,10 +7,6 @@ from bcrypt import gensalt, hashpw, checkpw
 from ..database import get_db
 from ..models import User
 import os
-
-router = APIRouter(
-    tags=['Auth'],
-)
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
