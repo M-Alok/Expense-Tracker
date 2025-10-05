@@ -38,10 +38,10 @@ def generate_pdf_report(period: str = "monthly", current_user: User = Depends(ge
     doc = SimpleDocTemplate(
         buffer, 
         pagesize=letter,
-        rightMargin=50,
-        leftMargin=50,
-        topMargin=50,
-        bottomMargin=50
+        rightMargin=20,
+        leftMargin=20,
+        topMargin=20,
+        bottomMargin=20
     )
     elements = []
     styles = getSampleStyleSheet()
@@ -52,7 +52,7 @@ def generate_pdf_report(period: str = "monthly", current_user: User = Depends(ge
         parent=styles['Heading1'],
         fontSize=24,
         textColor=colors.HexColor('#1a1a1a'),
-        spaceAfter=30,
+        spaceAfter=20,
         alignment=TA_CENTER,
         fontName='Helvetica-Bold'
     )

@@ -50,6 +50,8 @@ def delete_expense(expense_id: int, current_user: User = Depends(get_current_use
     expense = db.query(Expense).filter(Expense.id == expense_id, Expense.user_id == current_user.id).first()
     if not expense:
         raise HTTPException(status_code=404, detail="Expense not found")
+    category_name = expense.category.name if expense.category else "Unknown"
+    amount = expense.amount
     db.delete(expense)
     db.commit()
-    return {"message": f"Deleted {expense.category} expense of ammount {expense.amount}"}
+    return {"message": f"Deleted {category_name} expense of ammount {amount}"}
