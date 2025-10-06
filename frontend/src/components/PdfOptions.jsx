@@ -4,11 +4,11 @@ export default function PdfOptions({ isOpen, onClose, onDownload }) {
   if (!isOpen) return null;
 
   const periods = [
-    { key: 'weekly', label: 'Last 7 Days', description: 'Rolling weekly report' },
-    { key: 'current_week', label: 'Current Week', description: 'Monday to today' },
-    { key: 'monthly', label: 'Last 30 Days', description: 'Rolling monthly report' },
-    { key: 'current_month', label: 'Current Month', description: '1st to today' },
-    { key: 'yearly', label: 'Last Year', description: 'Last 365 days' }
+    { key: 'weekly', label: 'Last 7 Days', description: 'Weekly report' },
+    // { key: 'current_week', label: 'Current Week', description: 'Monday to today' },
+    { key: 'monthly', label: 'Last 30 Days', description: 'Monthly report' },
+    // { key: 'current_month', label: 'Current Month', description: '1st to today' },
+    // { key: 'yearly', label: 'Last Year', description: 'Last 365 days' }
   ];
 
   return (

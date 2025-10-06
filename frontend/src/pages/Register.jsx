@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IndianRupee } from 'lucide-react';
 import toast from 'react-hot-toast';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export default function Register() {
   const [registerData, setRegisterData] = useState({ username: '', email: '', password: '' });

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { X } from 'lucide-react';
 import toast from 'react-hot-toast';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export default function CategoryForm({ isOpen, token, onClose, onSuccess }) {
   const [categoryName, setCategoryName] = useState('');

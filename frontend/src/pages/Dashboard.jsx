@@ -7,7 +7,7 @@ import ExpenseForm from '../components/ExpenseForm';
 import CategoryForm from '../components/CategoryForm';
 import PdfOptions from '../components/PdfOptions';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export default function Dashboard({ token, user, onLogout }) {
   const [expenses, setExpenses] = useState([]);
@@ -31,9 +31,9 @@ export default function Dashboard({ token, user, onLogout }) {
     const expiresIn = payload.exp * 1000 - Date.now();
 
     if (expiresIn <= 0) {
-      handleLogout();
+      onLogout();
     } else {
-      const timer = setTimeout(() => handleLogout(), expiresIn);
+      const timer = setTimeout(() => onLogout(), expiresIn);
       return () => clearTimeout(timer);
     }
   }, [token]);
