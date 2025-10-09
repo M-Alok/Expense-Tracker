@@ -1,16 +1,17 @@
-from pydantic import BaseModel
-from datetime import datetime
+from pydantic import BaseModel, EmailStr
+from datetime import date
 from typing import Optional
 
 class UserCreate(BaseModel):
     username: str
-    email: str
+    email: EmailStr
     password: str
 
 class UserResponse(BaseModel):
     id: int
     username: str
     email: str
+    
     class Config:
         from_attributes = True
 
@@ -24,13 +25,14 @@ class CategoryCreate(BaseModel):
 class CategoryResponse(BaseModel):
     id: int
     name: str
+    
     class Config:
         from_attributes = True
 
 class ExpenseCreate(BaseModel):
     amount: float
     description: str
-    date: Optional[datetime] = None
+    date: date
     type: str
     category_id: int
 
@@ -38,9 +40,10 @@ class ExpenseResponse(BaseModel):
     id: int
     amount: float
     description: str
-    date: datetime
+    date: date
     type: str
     category_id: int
     category: CategoryResponse
+    
     class Config:
         from_attributes = True

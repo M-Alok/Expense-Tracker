@@ -1,4 +1,4 @@
-from .database import Base
+from app.database import Base
 from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -11,20 +11,18 @@ class User(Base):
     email = Column(String(50), unique=True, index=True)
     password = Column(String(255))
     
-    categories = relationship('Category', back_populates='owner')
-    
-    expenses = relationship('Expense', back_populates='owner')
+    categories = relationship('Category', back_populates='owner', cascade="all, delete-orphan")
+    expenses = relationship('Expense', back_populates='owner', cascade="all, delete-orphan")
 
 class Category(Base):
     __tablename__ = 'categories'
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(50))
-
     user_id = Column(Integer, ForeignKey('users.id'))
-    owner = relationship('User', back_populates='categories')
 
-    expenses = relationship('Expense', back_populates='category')
+    owner = relationship('User', back_populates='categories')
+    expenses = relationship('Expense', back_populates='category', cascade="all, delete-orphan")
 
 class Expense(Base):
     __tablename__ = 'expenses'
@@ -33,10 +31,10 @@ class Expense(Base):
     amount = Column(Float)
     description = Column(String(200))
     date = Column(DateTime, default=datetime.utcnow)
-    type = Column(String(20)) # expense or income
+    type = Column(String(20))  # expense or income
 
     user_id = Column(Integer, ForeignKey('users.id'))
-    owner = relationship('User', back_populates='expenses')
-
     category_id = Column(Integer, ForeignKey('categories.id'))
-    category = relationship("Category", back_populates="expenses")
+
+    owner = relationship('User', back_populates='expenses')
+    category = relationship('Category', back_populates='expenses')

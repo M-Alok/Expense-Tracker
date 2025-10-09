@@ -11,8 +11,8 @@ from reportlab.lib.units import inch
 from reportlab.lib.enums import TA_CENTER
 from fastapi.responses import StreamingResponse
 from .auth import get_current_user
-from ..database import get_db
-from ..models import User, Expense, Category
+from app.database import get_db
+from app.models import User, Expense, Category
 
 router = APIRouter(
     tags=['PDF'],

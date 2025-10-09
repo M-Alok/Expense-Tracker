@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { Plus, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const API_BASE = import.meta.env.VITE_API_URL;
@@ -71,8 +71,8 @@ export default function ExpenseForm({ isOpen, editingExpense, categories, token,
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+    <div className="fixed inset-0 bg-transparent bg-opacity-50 backdrop-blur-xl flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-2xl shadow-2xl shadow-gray-300 p-8 w-full max-w-md border-[2px] border-gray-300">
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-2xl font-bold text-gray-800">
             {editingExpense ? 'Edit Transaction' : 'Add Transaction'}
@@ -87,7 +87,7 @@ export default function ExpenseForm({ isOpen, editingExpense, categories, token,
             <select
               value={formData.type}
               onChange={(e) => setFormData({...formData, type: e.target.value})}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
@@ -119,13 +119,16 @@ export default function ExpenseForm({ isOpen, editingExpense, categories, token,
             <select
               value={formData.category_id}
               onChange={(e) => setFormData({...formData, category_id: e.target.value})}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
             >
-              <option value="">Select category</option>
-              {categories.map(cat => (
-                <option key={cat.id} value={cat.id}>{cat.name}</option>
-              ))}
+              <option value="" disabled>Select category</option>
+              {categories.length != 0 ? 
+                categories.map(cat => (
+                  <option key={cat.id} value={cat.id}>{cat.name}</option>
+                )) :
+                <option disabled>No categories available</option>
+              }
             </select>
           </div>
           <div>

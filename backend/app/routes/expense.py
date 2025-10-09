@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 from datetime import datetime
-from ..schema import ExpenseResponse, ExpenseCreate
+from app.schema import ExpenseResponse, ExpenseCreate
 from .auth import get_current_user
-from ..database import get_db
-from ..models import User, Expense
+from app.database import get_db
+from  app.models import User, Expense
 
 router = APIRouter(
     tags=['Expense'],

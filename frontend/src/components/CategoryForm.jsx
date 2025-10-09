@@ -36,8 +36,8 @@ export default function CategoryForm({ isOpen, token, onClose, onSuccess }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+    <div className="fixed inset-0 bg-transparent bg-opacity-50 backdrop-blur-xl flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-2xl shadow-2xs shadow-gray-300 p-8 w-full max-w-md border-[2px] border-gray-300">
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-2xl font-bold text-gray-800">Add Category</h3>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700">

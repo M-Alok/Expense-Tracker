@@ -8,8 +8,8 @@ export default function ConfirmDialog({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
-      <div className="bg-white rounded-2xl shadow-lg p-6 w-80 text-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-50 backdrop-blur-xl z-50">
+      <div className="bg-white rounded-2xl shadow-2xl shadow-gray-400 p-6 w-80 text-center border-[1px] border-gray-300">
         <h2 className="text-lg font-semibold mb-2">{title}</h2>
         <p className="text-gray-600 mb-4">{message}</p>
 
