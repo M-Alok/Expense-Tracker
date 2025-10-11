@@ -6,7 +6,6 @@ from jose import JWTError, jwt
 from bcrypt import gensalt, hashpw, checkpw
 from app.database import get_db
 from app.models import User
-import os
 
 SECRET_KEY = "mysecretkey123"
 ALGORITHM = "HS256"
