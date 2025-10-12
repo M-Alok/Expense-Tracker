@@ -1,6 +1,8 @@
 Description: A personal finance/expense tracker where users can log daily expenses and incomes, categorize them, and generate monthly/weekly reports as downloadable PDFs.
 
-React: [Expense Tracker](https://expense-tracker-eight-ivory-76.vercel.app/)
+Author: [M Alok](https://m-alok.onrender.com)
+
+React: [Expense Tracker](https://expense-tracker-eight-ivory-76.vercel.app)
 FastAPI: [Expensee Tracker API](https://expense-tracker-dah0.onrender.com/docs)
 
 Frontend (React + Tailwind CSS):
