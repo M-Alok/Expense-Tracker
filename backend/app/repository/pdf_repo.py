@@ -11,6 +11,7 @@ from fastapi.responses import StreamingResponse
 from app.models import Expense, Category
 
 def generate_pdf_report(period, current_user, db):
+    """Generate a PDF report of user expenses for the given period."""
     # Calculate date range
     now = datetime.utcnow()
     if period == "weekly":

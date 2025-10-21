@@ -3,6 +3,7 @@ from app.models import Expense
 from datetime import datetime
 
 def create_user_expense(expense, current_user, db):
+    """Create a new expense for the current user."""
     new_expense = Expense(
         amount=expense.amount,
         description=expense.description,
@@ -17,9 +18,11 @@ def create_user_expense(expense, current_user, db):
     return new_expense
 
 def get_user_expense(current_user, db):
+    """Retrieve all expenses for the current user."""
     return db.query(Expense).filter(Expense.user_id == current_user.id).order_by(Expense.date.desc()).all()
 
 def update_user_expense(expense_id, expense, current_user, db):
+    """Update an existing expense for the current user."""
     db_expense = db.query(Expense).filter(Expense.id == expense_id, Expense.user_id == current_user.id).first()
     if not db_expense:
         raise HTTPException(status_code=404, detail="Expense not found")
@@ -34,6 +37,7 @@ def update_user_expense(expense_id, expense, current_user, db):
     return db_expense
 
 def delete_user_expense(expense_id, current_user, db):
+    """Delete an expense for the current user."""
     expense = db.query(Expense).filter(Expense.id == expense_id, Expense.user_id == current_user.id).first()
     if not expense:
         raise HTTPException(status_code=404, detail="Expense not found")

@@ -3,6 +3,7 @@ from app.repository.auth import get_password_hash, verify_password, create_acces
 from app.models import User
 
 def register_user(user, db):
+    """Register a new user."""
     db_user = db.query(User).filter(User.username == user.username).first()
     if db_user:
         raise HTTPException(status_code=400, detail="Username already registered")
@@ -15,6 +16,7 @@ def register_user(user, db):
     return new_user
 
 def login_user(form_data, db):
+    """Authenticate user and return access token."""
     user = db.query(User).filter(User.username == form_data.username).first()
     if not user or not verify_password(form_data.password, user.password):
         raise HTTPException(status_code=401, detail="Incorrect username or password")
