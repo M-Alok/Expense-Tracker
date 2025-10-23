@@ -3,16 +3,13 @@ from fastapi.security import OAuth2PasswordBearer
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
 from jose import JWTError, jwt
-from app.database import get_db
+from app.core.database import get_db
 from app.models import User
 from passlib.context import CryptContext
-from dotenv import load_dotenv
-import os
+from app.core.config import settings
 
-load_dotenv()
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
+SECRET_KEY = settings.SECRET_KEY
+ALGORITHM = settings.ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES = 7 * 24 * 60
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 

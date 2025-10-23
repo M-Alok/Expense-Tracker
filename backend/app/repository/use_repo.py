@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from app.repository.auth import get_password_hash, verify_password, create_access_token
+from app.core.auth import get_password_hash, verify_password, create_access_token
 from app.models import User
 
 def register_user(user, db):

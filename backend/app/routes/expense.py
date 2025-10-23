@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 from app.schema import ExpenseResponse, ExpenseCreate
-from ..repository.auth import get_current_user
-from app.database import get_db
-from  app.models import User, Expense
+from app.core.auth import get_current_user
+from app.core.database import get_db
+from app.models import User
 
 from app.repository.expense_repo import create_user_expense, get_user_expense, update_user_expense, delete_user_expense
 
